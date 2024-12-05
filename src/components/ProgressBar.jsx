@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import nprogress from "nprogress";
 import "nprogress/nprogress.css";
+import "./nprogress-custom.css";
 
 const ProgressBar = ({ progress }) => {
   useEffect(() => {

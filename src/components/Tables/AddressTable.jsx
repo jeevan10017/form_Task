@@ -20,8 +20,8 @@ const AddressTable = ({ data }) => {
           {data.map((address, index) => (
             <tr
               key={index}
-              className={`border-t border-gray-700 ${
-                index % 2 === 0 ? "bg-gray-700" : "bg-gray-900"
+              className={`border-t border-gray-800 ${
+                index % 2 === 0 ? "bg-gray-700" : "bg-gray-700"
               }`}
             >
               <td className="p-3">{address.street || "N/A"}</td>

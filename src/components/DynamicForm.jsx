@@ -93,18 +93,33 @@ const DynamicForm = () => {
 
   const validateForm = () => {
     try {
-      schemas[formType].parse(formData);
+      if (!schemas[formType]) {
+        throw new Error("Invalid form type selected");
+      }
+  
+      const sanitizedData = {
+        ...formData,
+        cardNumber: formData.cardNumber?.replace(/\s/g, ""), 
+      };
+  
+      schemas[formType].parse(sanitizedData);
       setFormErrors({});
       return true;
     } catch (error) {
-      const errors = {};
-      error.errors.forEach((e) => {
-        errors[e.path[0]] = e.message;
-      });
-      setFormErrors(errors);
+      if (error.issues) {
+        const errors = {};
+        error.issues.forEach((e) => {
+          errors[e.path[0]] = e.message;
+        });
+        setFormErrors(errors);
+      } else {
+        toast.error(error.message || "An unknown error occurred.");
+      }
       return false;
     }
   };
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

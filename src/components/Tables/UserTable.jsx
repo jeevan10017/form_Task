@@ -9,7 +9,7 @@ const UserTable = ({ data }) => {
     <div className="overflow-x-auto my-8">
       <table className="w-full table-auto border-collapse bg-gray-800 text-gray-100">
         <thead>
-          <tr className="bg-blue-600 text-gray-100">
+          <tr className="bg-gray-900 text-gray-100">
             <th className="p-3 text-left">First Name</th>
             <th className="p-3 text-left">Last Name</th>
             <th className="p-3 text-left">Age</th>
